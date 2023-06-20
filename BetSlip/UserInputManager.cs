@@ -38,17 +38,25 @@ namespace BetSlip
                         Console.WriteLine("Invalid Input");
                     }
 
+                    //Console.Write("Enter Odd: ");
+                    //string? OddInput = Console.ReadLine();
+                    //decimal Odd;
+                    //if (decimal.TryParse(OddInput, out Odd))
+                    //{
+                    //    //
+                    //}
+                    //else
+                    //{
+                    //    Console.WriteLine("Invalid Input");
+                    //}
+
+
                     Console.Write("Enter Odd: ");
-                    string? OddInput = Console.ReadLine();
-                    decimal Odd;
-                    if (decimal.TryParse(OddInput, out Odd))
-                    {
-                        //
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input");
-                    }
+                    string? OddInputFraction = Console.ReadLine();
+                    string[] OddInputComponents = OddInputFraction.Split('/');
+                    decimal numerator = decimal.Parse(OddInputComponents[0]);
+                    decimal denominator = decimal.Parse(OddInputComponents[1]);
+                    decimal Odd = numerator/denominator;
 
                     Bet bet = new Bet(SportEvent, Odd, Amount);
                     bets.Add(bet);

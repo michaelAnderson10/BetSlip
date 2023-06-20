@@ -6,10 +6,8 @@ namespace BetSlip
     internal class Program
     {
         static void Main(string[] args)
-        {
-
-           
-
+        {        
+            
             List<Bet> bets = UserInputManager.UserInputConverter();
             BetProcessorMain betProcessor = new BetProcessorMain();
             List<BetReturn> betReturns = betProcessor.CalculateReturn(bets);
