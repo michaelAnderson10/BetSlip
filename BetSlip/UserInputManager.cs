@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,48 +20,37 @@ namespace BetSlip
                 choice = Console.ReadLine();
                 if (choice.Equals("Y", StringComparison.OrdinalIgnoreCase))
                 {
-
-                    Console.WriteLine("You chose to continue!");
-
-                    Console.Write("Enter Sport Event: ");
-
-                    string? SportEvent = Console.ReadLine();
-
-                    Console.Write("Enter Amount: ");
-                    string? AmountInput = Console.ReadLine();
+                    string? SportEvent;
+                    decimal Odd;
+                    string? OddFraction;
                     decimal Amount;
-                    if (decimal.TryParse(AmountInput, out Amount))
+
+                    try
                     {
-                        //
+                        Console.WriteLine("You chose to continue!");
+                        Console.Write("Enter Sport Event: ");
+                        SportEvent = Console.ReadLine();
+
+                        Console.Write("Enter Amount: ");
+                        string? AmountInput = Console.ReadLine();
+                        Amount = decimal.Parse(AmountInput);
+
+                        Console.Write("Enter Odd: ");
+                        OddFraction = Console.ReadLine();
+                        string[] OddInputComponents = OddFraction.Split('/');
+                        decimal numerator = decimal.Parse(OddInputComponents[0]);
+                        decimal denominator = decimal.Parse(OddInputComponents[1]);
+                        Odd = numerator / denominator;
+
+                        Bet bet = new Bet(SportEvent, Odd, OddFraction, Amount);
+                        bets.Add(bet);
+                        Console.WriteLine("Values Inputed");
+
                     }
-                    else
+                    catch 
                     {
-                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine("An error occured, please type a correct formats: Sport event: Words, Amount: Number, Odd: Fraction, e.g 2/1");
                     }
-
-                    //Console.Write("Enter Odd: ");
-                    //string? OddInput = Console.ReadLine();
-                    //decimal Odd;
-                    //if (decimal.TryParse(OddInput, out Odd))
-                    //{
-                    //    //
-                    //}
-                    //else
-                    //{
-                    //    Console.WriteLine("Invalid Input");
-                    //}
-
-
-                    Console.Write("Enter Odd: ");
-                    string? OddInputFraction = Console.ReadLine();
-                    string[] OddInputComponents = OddInputFraction.Split('/');
-                    decimal numerator = decimal.Parse(OddInputComponents[0]);
-                    decimal denominator = decimal.Parse(OddInputComponents[1]);
-                    decimal Odd = numerator/denominator;
-
-                    Bet bet = new Bet(SportEvent, Odd, Amount);
-                    bets.Add(bet);
-                    Console.WriteLine("Values Inputed");
                     continue;
 
                 }

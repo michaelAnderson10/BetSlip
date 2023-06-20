@@ -15,14 +15,15 @@ namespace BetSlip
             for (int i = 0; i<bets.Count(); i++)
             {
                 decimal Odd = bets[i].Odd;
+                string OddFraction = bets[i].OddFraction;
                 decimal Amount = bets[i].Amount; 
                 decimal PotentialReturn = (Odd * Amount) + Amount;
-                BetReturn betReturn = new BetReturn(bets[i].SportEvent, Odd, Amount, PotentialReturn);
+                BetReturn betReturn = new BetReturn(bets[i].SportEvent, Odd, OddFraction, Amount, PotentialReturn);
                 betReturns.Add(betReturn);
             }          
             return betReturns;
         }
-
+         
         public BetOutcome CalculateTotalBetAndPotentialReturn(List<BetReturn> betReturns)
         {
             decimal TotalBet = 0;

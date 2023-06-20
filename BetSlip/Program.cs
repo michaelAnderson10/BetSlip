@@ -17,11 +17,11 @@ namespace BetSlip
             
             foreach (var bet in betSlip.Betreturns)
             {
-                Console.WriteLine($"{bet.SportEvent} @ {bet.Odd} Bet:£{bet.Amount} Return:£{bet.PotentialReturns}");
+                Console.WriteLine($"{bet.SportEvent} @ {bet.OddFraction} Bet:£{bet.Amount} Return:£{bet.PotentialReturns}");
             }
             Console.WriteLine($"Total Bet: £{betSlip.BetOutcome.TotalBet}");
             Console.WriteLine($"Total Potential Returns: £{betSlip.BetOutcome.TotalPotentialReturn}");
 
         }
     }
-}
+} 

@@ -10,13 +10,15 @@ namespace BetSlip
     {
         public string? SportEvent { get; set; }
         public decimal Odd { get; set; }
+        public string? OddFraction { get; set; }
         public decimal Amount { get; set; }
         public decimal PotentialReturns { get; set; }
 
-        public BetReturn(string sportEvent, decimal odd, decimal amount, decimal potentialReturn)
+        public BetReturn(string sportEvent, decimal odd,string oddFraction, decimal amount, decimal potentialReturn)
         {
             SportEvent = sportEvent;
             Odd = odd;
+            OddFraction = oddFraction;
             Amount = amount;
             PotentialReturns = potentialReturn;
         }

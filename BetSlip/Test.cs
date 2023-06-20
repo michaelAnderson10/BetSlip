@@ -11,11 +11,11 @@ namespace BetSlip
             //Arrage
             List<Bet> bets = new List<Bet>
             {
-                new Bet("Football", 2, 10),
-                new Bet("Hockey", 4, 5)
+                new Bet("Football", 2, "2/1", 10),
+                new Bet("Hockey", 4, "3/2", 5)
             };
             Bet footballBet = bets[0];
-            BetReturn expectedFootballReturn = new BetReturn(footballBet.SportEvent, footballBet.Odd, footballBet.Amount, 30);
+            BetReturn expectedFootballReturn = new BetReturn(footballBet.SportEvent, footballBet.Odd, footballBet.OddFraction, footballBet.Amount, 30);
                          
             //Act
             BetProcessorMain betProcessorMain = new BetProcessorMain();
@@ -37,8 +37,8 @@ namespace BetSlip
             //Arrange
             List<BetReturn> betReturns = new List<BetReturn>
             {
-                new BetReturn("Football", 2, 10, 30),
-                new BetReturn("Hockey", 2, 5, 15)
+                new BetReturn("Football", 2, "2/1", 10, 30),
+                new BetReturn("Hockey", 2, "3/2", 5, 15)
             };
             
             decimal expectedTotalBet = 15;
