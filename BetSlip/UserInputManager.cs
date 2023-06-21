@@ -16,7 +16,10 @@ namespace BetSlip
 
             do
             {
-                Console.WriteLine("Place a bet? (Y/N)");
+                Console.WriteLine("To place a bet, press Y");
+                Console.WriteLine("To cancel bet, Press N");
+                Console.WriteLine("To Print Bet Slip, press P");
+                Console.WriteLine("Place a bet? (Y/N/P)");
                 choice = Console.ReadLine();
                 if (choice.Equals("Y", StringComparison.OrdinalIgnoreCase))
                 {
@@ -48,24 +51,27 @@ namespace BetSlip
                     } 
                     catch 
                     {
-                        Console.WriteLine("An error occured, please type a correct formats: Sport event: Words, Amount: Number, Odd: Fraction, e.g 2/1");
+                        Console.WriteLine("An error occured, please type a correct formats as instructed below...");
+                        Console.WriteLine("Sport event: Words, Amount: Number, Odd: Fraction, e.g 2/1");
                     }
                     continue;
 
                 }
+                else if (choice.Equals("P", StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(".......Bet Slip.......");
+                }
                 else if (choice.Equals("N", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("\nPrinting Bet Slip...");
+                    Environment.Exit(0);
                 }
 
                 else
                 {
-                    Console.WriteLine("Invalid choice. Please enter Y or N.");
+                    Console.WriteLine("Invalid choice. Please press Y, N or P.");
                 }
             }
-            while (!choice.Equals("N", StringComparison.OrdinalIgnoreCase));
-
-            Console.WriteLine("\nBet Slip");
+            while (!choice.Equals("P", StringComparison.OrdinalIgnoreCase));
 
             return bets;
 
