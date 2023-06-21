@@ -27,7 +27,6 @@ namespace BetSlip
 
                     try
                     {
-                        Console.WriteLine("You chose to continue!");
                         Console.Write("Enter Sport Event: ");
                         SportEvent = Console.ReadLine();
 
@@ -46,7 +45,7 @@ namespace BetSlip
                         bets.Add(bet);
                         Console.WriteLine("Values Inputed");
 
-                    }
+                    } 
                     catch 
                     {
                         Console.WriteLine("An error occured, please type a correct formats: Sport event: Words, Amount: Number, Odd: Fraction, e.g 2/1");
@@ -56,8 +55,9 @@ namespace BetSlip
                 }
                 else if (choice.Equals("N", StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine("Processing Bet Slip...");
+                    Console.WriteLine("\nPrinting Bet Slip...");
                 }
+
                 else
                 {
                     Console.WriteLine("Invalid choice. Please enter Y or N.");

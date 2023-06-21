@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,9 +35,22 @@ namespace BetSlip
                 TotalBet += betReturn.Amount;
                 TotalPotentialReturn += betReturn.PotentialReturns;
             }
-
             return new BetOutcome(TotalBet, TotalPotentialReturn);
+        }
 
+        public BetSlip CalculateSettlement(BetSlip betSlip)
+        {          
+            foreach(var betReturn in betSlip.Betreturns)
+            {
+                int SportEventOutcome = SportEvents.EventOutcome();
+
+                if (SportEventOutcome==0)
+                {
+                    betSlip.BetOutcome.TotalPotentialReturn -=betReturn.PotentialReturns;
+                    betReturn.PotentialReturns = 0;
+                }
+            }
+            return betSlip;
         }
     }
 }
