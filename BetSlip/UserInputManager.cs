@@ -19,6 +19,7 @@ namespace BetSlip
                 Console.WriteLine("To place a bet, press Y");
                 Console.WriteLine("To cancel bet, Press N");
                 Console.WriteLine("To Print Bet Slip, press P");
+                Console.WriteLine("Format: Sport Event: word,  Amount: Number,  Odd: Fraction(e.g 2/1)");
                 Console.WriteLine("Place a bet? (Y/N/P)");
                 choice = Console.ReadLine();
                 if (choice.Equals("Y", StringComparison.OrdinalIgnoreCase))
@@ -46,7 +47,7 @@ namespace BetSlip
 
                         Bet bet = new Bet(SportEvent, Odd, OddFraction, Amount);
                         bets.Add(bet);
-                        Console.WriteLine("Values Inputed");
+                        Console.WriteLine("Values Inputted");
 
                     } 
                     catch 

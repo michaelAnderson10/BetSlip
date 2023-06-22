@@ -28,7 +28,7 @@ namespace BetSlip
             {
                 Console.WriteLine($"{bet.SportEvent} @ {bet.OddFraction} Bet:£{bet.Amount} Return:£{bet.PotentialReturns}");
             }
-            Console.WriteLine($"Final Settlement: £{TotalSettlement.BetOutcome.TotalPotentialReturn}");
+            Console.WriteLine($"You Won: £{TotalSettlement.BetOutcome.TotalPotentialReturn}");
         }
     }
 } 
