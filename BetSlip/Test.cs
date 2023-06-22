@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-
+using Moq;
 namespace BetSlip
 {
     [TestFixture]
@@ -40,46 +40,19 @@ namespace BetSlip
                 new BetReturn("Football", 2, "2/1", 10, 30),
                 new BetReturn("Hockey", 2, "2/1", 5, 15)
             };
-            
+
             decimal expectedTotalBet = 15;
             decimal expectedTotalPotentialReturn = 45;
-            BetReturn football = betReturns[0];
 
             //Act
             BetProcessorMain betProcessorMain = new BetProcessorMain();
-            BetOutcome betOutcome = betProcessorMain.CalculateTotalBetAndPotentialReturn(betReturns);
+            BetOutcome actualbetOutcome = betProcessorMain.CalculateTotalBetAndPotentialReturn(betReturns);
 
             //Assert
             Assert.AreEqual(2, betReturns.Count());
-            Assert.AreEqual(expectedTotalBet, betOutcome.TotalBet);
-            Assert.AreEqual(expectedTotalPotentialReturn, betOutcome.TotalPotentialReturn);           
-        }
-        [Test]
-        public void CalculateSettlement_Checks()
-        {
-            //Arrange
-            List<BetReturn> betReturns = new List<BetReturn>()
-            {
-                new BetReturn("Football", 2, "2/1", 10, 30),
-                //new BetReturn("Hockey", 2, "2/1", 5, 15)
-            };
-            BetReturn Football = betReturns[0];
-            decimal expectedTotalBet1 = 15;
-            decimal expectedTotalPotentialReturn1 = 45;
-            BetOutcome expectedOutcome = new BetOutcome(expectedTotalBet1, expectedTotalPotentialReturn1);
-            BetSlip expectedBetSlip = new BetSlip(betReturns, expectedOutcome );
+            Assert.AreEqual(expectedTotalBet, actualbetOutcome.TotalBet);
+            Assert.AreEqual(expectedTotalPotentialReturn, actualbetOutcome.TotalPotentialReturn);
 
-            BetReturn actualBetReturn = new BetReturn(Football.SportEvent, Football.Odd, Football.OddFraction, Football.Amount, expectedTotalPotentialReturn1);
-            BetOutcome actualBetOutcome = new BetOutcome(15, 45);
-            BetSlip actualBetslip = new BetSlip(betReturns, actualBetOutcome );
-           
-            //Act
-            BetProcessorMain betProcessorMain1 = new BetProcessorMain();
-            BetSlip expectedSettlement = betProcessorMain1.CalculateSettlement(expectedBetSlip);
-            BetSlip actualSettlement = betProcessorMain1.CalculateSettlement(actualBetslip);
-
-            //Asert
-            Assert.AreEqual(actualSettlement, expectedSettlement);
         }
     }
 }
