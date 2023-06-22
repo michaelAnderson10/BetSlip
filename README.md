@@ -4,8 +4,11 @@ A fun app for placing bets on sport events. The app generates random outcome for
 User Instruction:
 
 The User is prompt to select 1 from 3 options:
+
 Option 1: Press Y to place a bet
+
 Option 2: Press N to cancel bet
+
 Option 3: Press P to print bet slip
 
 The app responds accordingly depending on the option that is selected.
